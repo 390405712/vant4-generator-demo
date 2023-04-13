@@ -11,8 +11,8 @@
 </template>
 
 <script lang="tsx" setup>
-import { FormGenerator, GeneratorUtils } from 'vant3-generator'
-import type { FormOption, RefFormGenerator } from 'vant3-generator/lib/type'
+import { FormGenerator, GeneratorUtils } from 'vant4-generator'
+import type { FormOption, RefFormGenerator } from 'vant4-generator/lib/type'
 import { RegExpMobilePhoneNunber } from 'common-rules'
 import { ref } from 'vue'
 import { Button } from 'vant';

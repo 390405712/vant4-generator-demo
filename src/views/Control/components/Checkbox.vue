@@ -6,9 +6,9 @@
 </template>
 
 <script lang="tsx" setup>
-import { FormGenerator } from 'vant3-generator'
+import { FormGenerator } from 'vant4-generator'
 import { Button } from 'vant'
-import type { FormOption, RefFormGenerator } from 'vant3-generator/lib/type'
+import type { FormOption, RefFormGenerator } from 'vant4-generator/lib/type'
 import { ref } from 'vue'
 
 let form = ref({})

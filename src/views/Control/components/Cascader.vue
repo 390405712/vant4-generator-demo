@@ -6,8 +6,8 @@
 </template>
 
 <script lang="tsx" setup>
-import { FormGenerator } from 'vant3-generator'
-import type { FormOption } from 'vant3-generator/lib/type'
+import { FormGenerator } from 'vant4-generator'
+import type { FormOption } from 'vant4-generator/lib/type'
 import type { CascaderOption } from 'vant';
 import { ref, onMounted } from 'vue'
 
@@ -150,7 +150,7 @@ let formOption = ref<FormOption[]>([
 
 onMounted(() => {
   formOption.value.forEach(item => {
-    item.popup = { teleport: '.FormGenerator' }
+    if (['picker', 'datePicker', 'timePicker', 'cascader'].includes(item.type)) item.popup = { teleport: '.FormGenerator' }
   })
 })
 </script>

@@ -13,8 +13,8 @@
 </template>
 
 <script lang="tsx" setup>
-import { FormGenerator } from 'vant3-generator'
-import type { FormOption } from 'vant3-generator/lib/type'
+import { FormGenerator } from 'vant4-generator'
+import type { FormOption } from 'vant4-generator/lib/type'
 import { ref } from 'vue'
 import { Rate } from 'vant';
 

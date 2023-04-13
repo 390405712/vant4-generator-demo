@@ -6,9 +6,9 @@
 </template>
 
 <script lang="tsx" setup>
-import { FormGenerator } from 'vant3-generator'
+import { FormGenerator } from 'vant4-generator'
 import type { PickerOption } from 'vant'
-import type { FormOption, RefFormGenerator } from 'vant3-generator/lib/type'
+import type { FormOption, RefFormGenerator } from 'vant4-generator/lib/type'
 import { ref, onMounted } from 'vue'
 
 let form = ref({})
@@ -43,17 +43,6 @@ let formOption = ref<FormOption[]>([
     type: 'picker',
     formItem: {
       name: 'key2',
-      label: '默认选中项',
-    },
-    control: {
-      columns,
-      defaultIndex: 1
-    }
-  },
-  {
-    type: 'picker',
-    formItem: {
-      name: 'key3',
       label: '多列选择',
     },
     control: {
@@ -78,7 +67,6 @@ let formOption = ref<FormOption[]>([
               value: '5'
             },
           ],
-          defaultIndex: 2,
         },
         // 第二列
         {
@@ -92,7 +80,6 @@ let formOption = ref<FormOption[]>([
             text: '晚上',
             value: 'c'
           },],
-          defaultIndex: 1,
         },
       ],
     },
@@ -100,7 +87,7 @@ let formOption = ref<FormOption[]>([
   {
     type: 'picker',
     formItem: {
-      name: 'key4',
+      name: 'key3',
       label: '级联选择',
     },
     control: {
@@ -121,7 +108,7 @@ let formOption = ref<FormOption[]>([
   {
     type: 'picker',
     formItem: {
-      name: 'key5',
+      name: 'key4',
       label: '禁用选项',
     },
     control: {
@@ -141,7 +128,7 @@ let formOption = ref<FormOption[]>([
   {
     type: 'picker',
     formItem: {
-      name: 'key6',
+      name: 'key5',
       label: '动态设置选项',
     },
     control: {
@@ -157,7 +144,7 @@ let formOption = ref<FormOption[]>([
   {
     type: 'picker',
     formItem: {
-      name: 'key7',
+      name: 'key6',
       label: '加载状态',
     },
     control: {
@@ -168,7 +155,7 @@ let formOption = ref<FormOption[]>([
   {
     type: 'picker',
     formItem: {
-      name: 'key8',
+      name: 'key7',
       label: '自定义Columns的结构',
     },
     control: {
@@ -189,7 +176,7 @@ let formOption = ref<FormOption[]>([
   {
     type: 'picker',
     formItem: {
-      name: 'key9',
+      name: 'key8',
       label: '监听',
     },
     control: {
@@ -208,7 +195,7 @@ let formOption = ref<FormOption[]>([
   {
     type: 'picker',
     formItem: {
-      name: 'key10',
+      name: 'key9',
       label: '自定义插槽',
     },
     control: {
@@ -228,7 +215,7 @@ let formOption = ref<FormOption[]>([
 
 onMounted(() => {
   formOption.value.forEach(item => {
-    item.popup = { teleport: '.FormGenerator' }
+    if (['picker', 'datePicker', 'timePicker', 'cascader'].includes(item.type)) item.popup = { teleport: '.FormGenerator' }
   })
 })
 </script>

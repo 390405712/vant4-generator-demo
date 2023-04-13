@@ -7,8 +7,8 @@
 </template>
 
 <script lang="tsx" setup>
-import { FormGenerator } from 'vant3-generator'
-import type { FormOption, RefFormGenerator } from 'vant3-generator/lib/type'
+import { FormGenerator } from 'vant4-generator'
+import type { FormOption, RefFormGenerator } from 'vant4-generator/lib/type'
 import { ref, onMounted } from 'vue'
 import { Rate, Slider } from 'vant';
 
@@ -95,13 +95,12 @@ let formOption = ref<FormOption[]>([
     },
   },
   {
-    type: 'datetimePicker',
+    type: 'datePicker',
     formItem: {
       name: 'key7',
       label: '时间选择',
     },
     control: {
-      type: 'date',
       title: '选择年月日',
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 10, 1)
@@ -181,7 +180,7 @@ function submit() {
 
 onMounted(() => {
   formOption.value.forEach(item => {
-    item.popup = { teleport: '.FormGenerator' }
+    if (['picker', 'datePicker', 'timePicker', 'cascader'].includes(item.type)) item.popup = { teleport: '.FormGenerator' }
   })
 })
 </script>

@@ -11,7 +11,8 @@ import { ref } from 'vue'
 import Field from './components/Field.vue'
 import Picker from './components/Picker.vue'
 import Steper from './components/Steper.vue'
-import DatetimePicker from './components/DatetimePicker.vue'
+import DatePicker from './components/DatePicker.vue'
+import TimePicker from './components/TimePicker.vue'
 import Calendar from './components/Calendar.vue'
 import Cascader from './components/Cascader.vue'
 import Checkbox from './components/Checkbox.vue'
@@ -30,7 +31,8 @@ const Com: Record<string, DefineComponent<any, any, any>> = {
   '单选框': Radio,
   '复选框': Checkbox,
   '开关': Switch,
-  '时间选择': DatetimePicker,
+  '日期选择': DatePicker,
+  '时间选择': TimePicker,
   '日历': Calendar,
   '级联选择': Cascader,
   '文件上传': Uploader,

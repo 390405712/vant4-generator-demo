@@ -6,13 +6,14 @@
 </template>
 
 <script lang="tsx" setup>
-import { FormGenerator } from 'vant3-generator'
+import { FormGenerator } from 'vant4-generator'
 import { Icon, Dialog } from 'vant'
-import type { FormOption } from 'vant3-generator/lib/type'
+import type { FormOption } from 'vant4-generator/lib/type'
 import { ref } from 'vue'
 
 let form = ref({
-  key5: false
+  key5: false,
+  key7: false
 })
 let formOption = ref<FormOption[]>([
   {
