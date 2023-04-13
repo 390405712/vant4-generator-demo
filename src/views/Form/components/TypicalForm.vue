@@ -98,7 +98,7 @@ let formOption = ref<FormOption[]>([
     type: 'datePicker',
     formItem: {
       name: 'key7',
-      label: '时间选择',
+      label: '日期选择',
     },
     control: {
       title: '选择年月日',
