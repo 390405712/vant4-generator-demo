@@ -1,118 +1,119 @@
 <template>
   <div class="phone">
-    <FormGenerator :model="form" :formOption="formOption" />
+    <FormGenerator v-bind="{ ...formAttrs }" />
   </div>
-  <JsonViewer :value="form" expand previewMode />
+  <JsonViewer :value="formAttrs.model" expand previewMode />
 </template>
 
 <script lang="tsx" setup>
 import { FormGenerator } from 'vant4-generator'
 import type { PickerOption } from 'vant'
-import type { FormOption } from 'vant4-generator/lib/type'
+import type { FormAttrs } from 'vant4-generator/lib/type'
 import { ref, onMounted } from 'vue'
 
-let form = ref({})
-
-let formOption = ref<FormOption[]>([
-  {
-    type: 'timePicker',
-    formItem: {
-      name: 'key1',
-      label: '基础用法',
-    },
-    control: {
-      title: '选择时间',
-    }
-  },
-  {
-    type: 'timePicker',
-    formItem: {
-      name: 'key2',
-      label: '选项类型',
-    },
-    control: {
-      title: '选择时间',
-      columnsType: ['hour', 'minute', 'second']
-    }
-  },
-  {
-    type: 'timePicker',
-    formItem: {
-      name: 'key3',
-      label: '时间范围',
-    },
-    control: {
-      title: '选择时间',
-      minHour: "10",
-      maxHour: "20",
-      minMinute: "30",
-      maxMinute: "40"
-    }
-  },
-  {
-    type: 'timePicker',
-    formItem: {
-      name: 'key4',
-      label: '格式化选项',
-    },
-    control: {
-      formatter: (type, option) => {
-        if (type === 'hour') option.text += '时';
-        if (type === 'minute') option.text += '分';
-        return option;
+const formAttrs = ref<FormAttrs>({
+  model: {},
+  formOption: [
+    {
+      type: 'timePicker',
+      formItem: {
+        name: 'key1',
+        label: '基础用法',
+      },
+      control: {
+        title: '选择时间',
       }
-    }
-  },
-  {
-    type: 'timePicker',
-    formItem: {
-      name: 'key5',
-      label: '过滤选项',
     },
-    control: {
-      filter: (type, options) => {
-        if (type === 'minute') {
-          console.log(options);
-          return options.filter((option) => Number(option.text) % 10 === 0);
+    {
+      type: 'timePicker',
+      formItem: {
+        name: 'key2',
+        label: '选项类型',
+      },
+      control: {
+        title: '选择时间',
+        columnsType: ['hour', 'minute', 'second']
+      }
+    },
+    {
+      type: 'timePicker',
+      formItem: {
+        name: 'key3',
+        label: '时间范围',
+      },
+      control: {
+        title: '选择时间',
+        minHour: "10",
+        maxHour: "20",
+        minMinute: "30",
+        maxMinute: "40"
+      }
+    },
+    {
+      type: 'timePicker',
+      formItem: {
+        name: 'key4',
+        label: '格式化选项',
+      },
+      control: {
+        formatter: (type, option) => {
+          if (type === 'hour') option.text += '时';
+          if (type === 'minute') option.text += '分';
+          return option;
         }
-        return options;
       }
-    }
-  },
-  {
-    type: 'timePicker',
-    formItem: {
-      name: 'key6',
-      label: '监听',
     },
-    control: {
-      onChange: (value: Date) => { console.log(`onChange:${value}`) },
-      onConfirm: (value: Date) => { console.log(`onConfirm:${value}`) },
-      onCancel: () => { console.log(`onCancel`) },
-    }
-  },
-  {
-    type: 'timePicker',
-    formItem: {
-      name: 'key7',
-      label: '自定义插槽',
-    },
-    control: {
-      slots: {
-        // toolbar: () => '自定义整个顶部栏的内容',
-        title: () => '自定义标题内容',
-        confirm: () => '自定义确认按钮内容',
-        cancel: () => '自定义取消按钮内容',
-        option: (option: PickerOption) => `${option.text}-文本`,
-        'columns-top': () => '自定义选项上方内容',
-        'columns-bottom': () => '自定义选项下方内容',
+    {
+      type: 'timePicker',
+      formItem: {
+        name: 'key5',
+        label: '过滤选项',
+      },
+      control: {
+        filter: (type, options) => {
+          if (type === 'minute') {
+            console.log(options);
+            return options.filter((option) => Number(option.text) % 10 === 0);
+          }
+          return options;
+        }
       }
-    }
-  },
-])
+    },
+    {
+      type: 'timePicker',
+      formItem: {
+        name: 'key6',
+        label: '监听',
+      },
+      control: {
+        onChange: (value: Date) => { console.log(`onChange:${value}`) },
+        onConfirm: (value: Date) => { console.log(`onConfirm:${value}`) },
+        onCancel: () => { console.log(`onCancel`) },
+      }
+    },
+    {
+      type: 'timePicker',
+      formItem: {
+        name: 'key7',
+        label: '自定义插槽',
+      },
+      control: {
+        slots: {
+          // toolbar: () => '自定义整个顶部栏的内容',
+          title: () => '自定义标题内容',
+          confirm: () => '自定义确认按钮内容',
+          cancel: () => '自定义取消按钮内容',
+          option: (option: PickerOption) => `${option.text}-文本`,
+          'columns-top': () => '自定义选项上方内容',
+          'columns-bottom': () => '自定义选项下方内容',
+        }
+      }
+    },
+  ]
+})
 
 onMounted(() => {
-  formOption.value.forEach(item => {
+  formAttrs.value.formOption.forEach(item => {
     if (['picker', 'datePicker', 'timePicker', 'cascader'].includes(item.type)) item.popup = { teleport: '.FormGenerator' }
   })
 })
